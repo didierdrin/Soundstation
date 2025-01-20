@@ -1,56 +1,14 @@
+'use client';
+import { useState } from 'react';
 import { ShoppingCart, Search, Play, PlayCircle } from 'lucide-react';
+import { Beat } from '../services/beats';
 import PlayBar  from "@/components/Playbar";
 import TopBar  from "@/components/Topbar";
 import Footer  from "@/components/Footer";
+import CarouselSection from '@/components/CarouselSection';
+import TrendingSection from '@/components/TrendingSection';
 
 
-const CarouselSection = () => (
-  <section className="h-[700px] bg-gradient-to-r from-purple-50 to-white pt-16">
-    <div className="max-w-7xl mx-auto h-full px-4 py-12">
-      <h2 className="text-3xl font-bold mb-8">What's Popular</h2>
-      <div className="flex gap-4 flex-wrap">
-        {['Hip Hop', 'R&B', 'Pop', 'Trap', 'Lo-Fi', 'House'].map((genre) => (
-          <button
-            key={genre}
-            className="px-6 py-3 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-colors"
-          >
-            {genre}
-          </button>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const TrendingSection = () => (
-  <section className="h-[500px] bg-white">
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold mb-8">Trending</h2>
-      <div className="flex gap-6 overflow-x-auto pb-4">
-        {[1, 2, 3, 4, 5].map((item) => (
-          <div key={item} className="flex-none w-64">
-            <div className="h-[320px] bg-white rounded-lg shadow-md">
-              <div className="h-[150px] bg-purple-100 rounded-t-lg"></div>
-              <div className="p-4">
-                <h3 className="font-semibold text-lg mb-1">Summer Vibes Beat</h3>
-                <p className="text-gray-600 mb-4">Producer Name</p>
-                <div className="flex justify-between items-center">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700">
-                    <ShoppingCart className="h-4 w-4" />
-                    $29.99
-                  </button>
-                  <button className="p-2 text-purple-600 hover:text-purple-700">
-                    <PlayCircle className="h-8 w-8" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
 const ProducersSection = () => (
   <section className="h-[500px] bg-purple-50">
@@ -78,16 +36,85 @@ const ProducersSection = () => (
   </section>
 );
 
-
 export default function Home() {
+  const [currentBeat, setCurrentBeat] = useState<Beat | undefined>();
+
+  const handlePlayBeat = (beat: Beat) => {
+    setCurrentBeat(beat);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <TopBar />
       <CarouselSection />
-      <TrendingSection />
+      <TrendingSection onPlayBeat={handlePlayBeat} />
       <ProducersSection />
       <Footer />
-      <PlayBar />
+      <PlayBar currentBeat={currentBeat} />
     </div>
   );
 }
+
+
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen bg-white">
+//       <TopBar />
+//       <CarouselSection />
+//       <TrendingSection />
+//       <ProducersSection />
+//       <Footer />
+//       <PlayBar />
+//     </div>
+//   );
+// }
+
+
+
+// const CarouselSection = () => (
+//   <section className="h-[700px] bg-gradient-to-r from-purple-50 to-white pt-16">
+//     <div className="max-w-7xl mx-auto h-full px-4 py-12">
+//       <h2 className="text-3xl font-bold mb-8">What's Popular</h2>
+//       <div className="flex gap-4 flex-wrap">
+//         {['Hip Hop', 'R&B', 'Pop', 'Trap', 'Lo-Fi', 'House'].map((genre) => (
+//           <button
+//             key={genre}
+//             className="px-6 py-3 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-colors"
+//           >
+//             {genre}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   </section>
+// );
+
+// const TrendingSection = () => (
+//   <section className="h-[500px] bg-white">
+//     <div className="max-w-7xl mx-auto px-4 py-12">
+//       <h2 className="text-3xl font-bold mb-8">Trending</h2>
+//       <div className="flex gap-6 overflow-x-auto pb-4">
+//         {[1, 2, 3, 4, 5].map((item) => (
+//           <div key={item} className="flex-none w-64">
+//             <div className="h-[320px] bg-white rounded-lg shadow-md">
+//               <div className="h-[150px] bg-purple-100 rounded-t-lg"></div>
+//               <div className="p-4">
+//                 <h3 className="font-semibold text-lg mb-1">Summer Vibes Beat</h3>
+//                 <p className="text-gray-600 mb-4">Producer Name</p>
+//                 <div className="flex justify-between items-center">
+//                   <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700">
+//                     <ShoppingCart className="h-4 w-4" />
+//                     $29.99
+//                   </button>
+//                   <button className="p-2 text-purple-600 hover:text-purple-700">
+//                     <PlayCircle className="h-8 w-8" />
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   </section>
+// );
