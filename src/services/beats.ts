@@ -56,6 +56,8 @@ class BeatsService {
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Beat));
   }
 
+ 
+
   subscribeToBeats(callback: (beats: Beat[]) => void) {
     const q = query(
       collection(db, 'beats'),
