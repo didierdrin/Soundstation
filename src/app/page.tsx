@@ -47,6 +47,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <TopBar />
       <CarouselSection />
+      <br />
       <TrendingSection onPlayBeat={handlePlayBeat} />
       <ProducersSection />
       <Footer />

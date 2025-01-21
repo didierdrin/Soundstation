@@ -39,7 +39,7 @@ const CarouselSection = () => {
                 className="w-full h-full object-cover rounded-lg"
               />
               {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg"></div>
               <div className="absolute bottom-8 left-8 bg-white bg-opacity-75 p-4 rounded-md shadow-md">
                 <h3 className="font-semibold text-2xl mb-2">
                   {beats[currentIndex].title}
@@ -62,6 +62,25 @@ const CarouselSection = () => {
 };
 
 export default CarouselSection;
+
+
+
+
+            // {/* <div className="relative w-full h-[700px]">
+            //   <img
+            //     src={beats[currentIndex].imageUrl || '/placeholder-image.jpg'}
+            //     alt={beats[currentIndex].title}
+            //     className="w-full h-full object-cover rounded-lg"
+            //   />
+            //   <div className="absolute bottom-8 left-8 bg-white bg-opacity-75 p-4 rounded-md shadow-md">
+            //     <h3 className="font-semibold text-2xl mb-2">{beats[currentIndex].title}</h3>
+            //     <p className="text-gray-600 mb-1">{beats[currentIndex].producerName}</p>
+            //     <p className="text-purple-600 font-bold text-lg">${beats[currentIndex].price}</p>
+            //   </div>
+            // </div> */}
+
+
+
 
 // import { useState, useEffect } from 'react';
 // import { beatsService, Beat } from '../services/beats';
