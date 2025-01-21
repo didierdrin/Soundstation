@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { beatsService, Beat } from '../services/beats';
+import { useState, useEffect } from "react";
+import { beatsService, Beat } from "../services/beats";
 
 const CarouselSection = () => {
   const [beats, setBeats] = useState<Beat[]>([]);
@@ -7,13 +7,14 @@ const CarouselSection = () => {
 
   useEffect(() => {
     // Fetch beats with the genre "Carousel"
-    beatsService.getBeatsByGenre('Carousel')
+    beatsService
+      .getBeatsByGenre("Carousel")
       .then((fetchedBeats) => {
-        console.log('Fetched beats with genre Carousel:', fetchedBeats); // Debug log
+        console.log("Fetched beats with genre Carousel:", fetchedBeats); // Debug log
         setBeats(fetchedBeats);
       })
       .catch((error) => {
-        console.error('Error fetching beats:', error);
+        console.error("Error fetching beats:", error);
       });
   }, []);
 
@@ -27,20 +28,28 @@ const CarouselSection = () => {
   }, [beats]);
 
   return (
-    <section className="h-[500px] bg-gradient-to-r from-purple-50 to-white relative">
+    <section className="h-[400px] bg-gradient-to-r from-purple-50 to-white relative">
       <div className="max-w-7xl mx-auto h-full px-4 py-12 flex items-center justify-center">
         {beats.length > 0 ? (
           <div className="w-full h-full flex items-center justify-center">
             <div className="relative w-full h-[700px]">
               <img
-                src={beats[currentIndex].imageUrl || '/placeholder-image.jpg'}
+                src={beats[currentIndex].imageUrl || "/placeholder-image.jpg"}
                 alt={beats[currentIndex].title}
                 className="w-full h-full object-cover rounded-lg"
               />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
               <div className="absolute bottom-8 left-8 bg-white bg-opacity-75 p-4 rounded-md shadow-md">
-                <h3 className="font-semibold text-2xl mb-2">{beats[currentIndex].title}</h3>
-                <p className="text-gray-600 mb-1">{beats[currentIndex].producerName}</p>
-                <p className="text-purple-600 font-bold text-lg">${beats[currentIndex].price}</p>
+                <h3 className="font-semibold text-2xl mb-2">
+                  {beats[currentIndex].title}
+                </h3>
+                <p className="text-gray-600 mb-1">
+                  {beats[currentIndex].producerName}
+                </p>
+                <p className="text-purple-600 font-bold text-lg">
+                  ${beats[currentIndex].price}
+                </p>
               </div>
             </div>
           </div>
@@ -53,7 +62,6 @@ const CarouselSection = () => {
 };
 
 export default CarouselSection;
-
 
 // import { useState, useEffect } from 'react';
 // import { beatsService, Beat } from '../services/beats';
@@ -104,4 +112,3 @@ export default CarouselSection;
 // };
 
 // export default CarouselSection;
-
