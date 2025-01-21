@@ -27,7 +27,7 @@ const CarouselSection = () => {
   }, [beats]);
 
   return (
-    <section className="h-[700px] bg-gradient-to-r from-purple-50 to-white relative">
+    <section className="h-[500px] bg-gradient-to-r from-purple-50 to-white relative">
       <div className="max-w-7xl mx-auto h-full px-4 py-12 flex items-center justify-center">
         {beats.length > 0 ? (
           <div className="w-full h-full flex items-center justify-center">
